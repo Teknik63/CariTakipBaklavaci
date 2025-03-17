@@ -214,7 +214,7 @@ namespace WindowsFormsApp2
 
         private void button9_Click(object sender, EventArgs e)
         {
-            TedarikciHareket tedarikciHareket = new TedarikciHareket();
+            TedarikHareket tedarikciHareket = new TedarikHareket();
             tedarikciHareket.ShowDialog();
         }
 

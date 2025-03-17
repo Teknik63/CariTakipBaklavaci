@@ -117,8 +117,10 @@ namespace WindowsFormsApp2
             {
                 txtCariAd.Items.Add(dr["CariUnvan"]);
             }
-            dr.Close();
+
             cmd.Dispose();
+            dr.Close();
+           
 
             cmd = new SqlCommand("Select * From TBL_Urunler", con);
             dr = cmd.ExecuteReader();

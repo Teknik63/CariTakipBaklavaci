@@ -138,6 +138,12 @@
     <Compile Include="Tedarikciler.Designer.cs">
       <DependentUpon>Tedarikciler.cs</DependentUpon>
     </Compile>
+    <Compile Include="TedarikHareket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TedarikHareket.Designer.cs">
+      <DependentUpon>TedarikHareket.cs</DependentUpon>
+    </Compile>
     <Compile Include="Urunler.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,6 +184,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tedarikciler.resx">
       <DependentUpon>Tedarikciler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TedarikHareket.resx">
+      <DependentUpon>TedarikHareket.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Urunler.resx">
       <DependentUpon>Urunler.cs</DependentUpon>
