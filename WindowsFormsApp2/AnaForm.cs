@@ -15,7 +15,7 @@ namespace WindowsFormsApp2
     
     public partial class AnaForm : Form
     {
-        public decimal toplamtutar;
+        public decimal toplamtutar,c,g,t;
         public AnaForm()
         {
             InitializeComponent();
@@ -53,212 +53,153 @@ namespace WindowsFormsApp2
 
         private void button5_Click(object sender, EventArgs e)
         {
-
             if(checkBox1.Checked)
             {
-                TariheGore(ilkTarih.Value.ToString("yyyy.MM.dd"), sonTarih.Value.ToString("yyyy.MM.dd"));
-                decimal t = Convert.ToDecimal(ciro.Text) - (Convert.ToDecimal(gider.Text) + Convert.ToDecimal(tedarikci.Text));
-                net.Text = t.ToString();
-            }
-            else
-            {
-                GenelSorgu();
-                decimal t = Convert.ToDecimal(ciro.Text) - (Convert.ToDecimal(gider.Text) + Convert.ToDecimal(tedarikci.Text));
-                net.Text = t.ToString();
-            }
+              TBL_CariHareketTableAdapter hareket = new TBL_CariHareketTableAdapter();
+              object cariCiro =  hareket.ScalarCariCiroTarihli(ilkTarih.Value.ToString("yyyy.MM.dd"), sonTarih.Value.ToString("yyyy.MM.dd"));
 
- 
+                if (cariCiro != DBNull.Value && cariCiro != null && cariCiro is decimal) // DBNull ve null kontrolü
+                {
+                    if (decimal.TryParse(cariCiro.ToString(), out decimal ondalikDeger))
+                    {
+                        c = ondalikDeger;
+                    }
+                    else
+                    {
+                        // Dönüşüm başarısız ise yapılacak işlemler
+                        c = 0; // veya varsayılan başka bir değer
+                    }
+                }
+                else
+                {
+                    // tedarikToplam null veya DBNull ise yapılacak işlemler
+                    c = 0; // veya varsayılan başka bir değer
+                }
+                
+
+                TBL_GiderTableAdapter giderler = new TBL_GiderTableAdapter();
+                object giderToplam = giderler.ScalarGiderTarihli(ilkTarih.Value.ToString("yyyy.MM.dd"), sonTarih.Value.ToString("yyyy.MM.dd"));
+
+                if (giderToplam != DBNull.Value && giderToplam != null && giderToplam is decimal)
+                {
+                    if (decimal.TryParse(giderToplam.ToString(), out decimal ondalikDeger))
+                    {
+                        g = ondalikDeger;
+                    }
+                    else
+                    {
+                        // Dönüşüm başarısız ise yapılacak işlemler
+                        g = 0; // veya varsayılan başka bir değer
+                    }
+                }
+                else
+                {
+                    // tedarikToplam null veya DBNull ise yapılacak işlemler
+                    g = 0; // veya varsayılan başka bir değer
+                }
+                
+
+                TBL_TedarikciHareketTableAdapter tedarikHareket = new TBL_TedarikciHareketTableAdapter();
+                object tedarikToplam = tedarikHareket.ScalarTedarikciBorcTarihli(ilkTarih.Value.ToString("yyyy.MM.dd"), sonTarih.Value.ToString("yyyy.MM.dd"));
+
+                if (tedarikToplam != null && tedarikToplam != DBNull.Value)
+                {
+                    if (decimal.TryParse(tedarikToplam.ToString(), out decimal ondalikDeger))
+                    {
+                        t = ondalikDeger;
+                    }
+                    else
+                    {
+                        // Dönüşüm başarısız ise yapılacak işlemler
+                        t = 0; // veya varsayılan başka bir değer
+                    }
+                }
+                else
+                {
+                    // tedarikToplam null veya DBNull ise yapılacak işlemler
+                    t = 0; // veya varsayılan başka bir değer
+                }
+                
+
+                decimal f = c - (g + t);
+                net.Text = f.ToString("N2");
+
+            }
+            else ///
+            {
+                TBL_CariHareketTableAdapter hareket = new TBL_CariHareketTableAdapter();
+                object cariCiro = hareket.ScalarCariCiro();
+
+                if (cariCiro != DBNull.Value && cariCiro != null && cariCiro is decimal) // DBNull ve null kontrolü
+                {
+                    if (decimal.TryParse(cariCiro.ToString(), out decimal ondalikDeger))
+                    {
+                        c = ondalikDeger;
+                    }
+                    else
+                    {
+                        // Dönüşüm başarısız ise yapılacak işlemler
+                        c = 0; // veya varsayılan başka bir değer
+                    }
+                }
+                else
+                {
+                    // tedarikToplam null veya DBNull ise yapılacak işlemler
+                    c = 0; // veya varsayılan başka bir değer
+                }
+
+                TBL_GiderTableAdapter giderler = new TBL_GiderTableAdapter();
+                object giderToplam = giderler.ScalarGider();
+
+                if (giderToplam != DBNull.Value && giderToplam != null && giderToplam is decimal)
+                {
+                    if (decimal.TryParse(giderToplam.ToString(), out decimal ondalikDeger))
+                    {
+                        g = ondalikDeger;
+                    }
+                    else
+                    {
+                        // Dönüşüm başarısız ise yapılacak işlemler
+                        g = 0; // veya varsayılan başka bir değer
+                    }
+                }
+                else
+                {
+                    // tedarikToplam null veya DBNull ise yapılacak işlemler
+                    g = 0; // veya varsayılan başka bir değer
+                }
+
+                TBL_TedarikciHareketTableAdapter tedarikHareket = new TBL_TedarikciHareketTableAdapter();
+                object tedarikToplam = tedarikHareket.ScalarTedarikciBorc();
+
+                if (tedarikToplam != null && tedarikToplam != DBNull.Value)
+                {
+                    if (decimal.TryParse(tedarikToplam.ToString(), out decimal ondalikDeger))
+                    {
+                        t = ondalikDeger;
+                    }
+                    else
+                    {
+                        // Dönüşüm başarısız ise yapılacak işlemler
+                        t = 0; // veya varsayılan başka bir değer
+                    }
+                }
+                else
+                {
+                    // tedarikToplam null veya DBNull ise yapılacak işlemler
+                    t = 0; // veya varsayılan başka bir değer
+                }
+
+                decimal f = c - (g + t);
+                net.Text = f.ToString("C2");
+
+            }
+            ciro.Text = c.ToString("C2");
+            gider.Text = g.ToString("C2");
+            tedarikci.Text = t.ToString("C2");
 
         }
 
-        public void TariheGore(string ilkTarih,string sonTarih)
-        {
-            TBL_CariHareketTableAdapter hareket = new TBL_CariHareketTableAdapter();
-            SqlConnection con = new SqlConnection(hareket.Connection.ConnectionString);
-            con.Open();
-            SqlCommand cmd = new SqlCommand("SELECT SUM(HareketToplam) FROM TBL_CariHareket WHERE HareketTarih >= @BaslangicTarihi AND HareketTarih <= @BitisTarihi", con);
-            cmd.Parameters.AddWithValue("@BaslangicTarihi", ilkTarih);
-            cmd.Parameters.AddWithValue("@BitisTarihi", sonTarih);
-            cmd.ExecuteNonQuery();
-            SqlDataReader dr = cmd.ExecuteReader();
-
-            while (dr.Read())
-            {
-                if (dr[0] != DBNull.Value && dr[0] != null) // DBNull ve null kontrolü
-                {
-                    if (decimal.TryParse(dr[0].ToString(), out decimal tutar)) // decimal dönüşüm kontrolü
-                    {
-                        toplamtutar = tutar;
-                        ciro.Text = tutar.ToString("N2");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Veritabanından dönen değer decimal'e dönüştürülemedi.");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Veritabanından dönen değer null veya DBNull.");
-                }
-
-            }
-            dr.Close();
-            cmd.Dispose();
-
-            cmd = new SqlCommand("SELECT SUM(GiderTutar) FROM TBL_Gider WHERE GiderTarih >= @BaslangicTarihi AND GiderTarih <= @BitisTarihi", con);
-            cmd.Parameters.AddWithValue("@BaslangicTarihi", ilkTarih);
-            cmd.Parameters.AddWithValue("@BitisTarihi", sonTarih);
-            cmd.ExecuteNonQuery();
-            dr = cmd.ExecuteReader();
-
-            while (dr.Read())
-            {
-                if (dr[0] != DBNull.Value && dr[0] != null) // DBNull ve null kontrolü
-                {
-                    if (decimal.TryParse(dr[0].ToString(), out decimal tutar)) // decimal dönüşüm kontrolü
-                    {
-                        toplamtutar = tutar;
-                        gider.Text = tutar.ToString("N2");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Veritabanından dönen değer decimal'e dönüştürülemedi.");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Veritabanından dönen değer null veya DBNull.");
-                }
-
-            }
-
-            dr.Close();
-            cmd.Dispose();
-
-            cmd = new SqlCommand("SELECT SUM(HareketToplam) FROM TBL_TedarikciHareket WHERE HareketTarih >= @BaslangicTarihi AND HareketTarih <= @BitisTarihi", con);
-            cmd.Parameters.AddWithValue("@BaslangicTarihi", ilkTarih);
-            cmd.Parameters.AddWithValue("@BitisTarihi", sonTarih);
-            cmd.ExecuteNonQuery();
-            dr = cmd.ExecuteReader();
-
-            while (dr.Read())
-            {
-                if (dr[0] != DBNull.Value && dr[0] != null) // DBNull ve null kontrolü
-                {
-                    if (decimal.TryParse(dr[0].ToString(), out decimal tutar)) // decimal dönüşüm kontrolü
-                    {
-                        toplamtutar = tutar;
-                        tedarikci.Text = tutar.ToString("N2");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Veritabanından dönen değer decimal'e dönüştürülemedi.");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Veritabanından dönen değer null veya DBNull.");
-                }
-
-            }
-
-
-
-            con.Close();
-
-        }
-
-
-        public void GenelSorgu()
-        {
-            TBL_CariHareketTableAdapter hareket = new TBL_CariHareketTableAdapter();
-            SqlConnection con = new SqlConnection(hareket.Connection.ConnectionString);
-            con.Open();
-            SqlCommand cmd = new SqlCommand("SELECT SUM(HareketToplam) FROM TBL_CariHareket", con);
-
-            cmd.ExecuteNonQuery();
-            SqlDataReader dr = cmd.ExecuteReader();
-
-            while (dr.Read())
-            {
-                if (dr[0] != DBNull.Value && dr[0] != null) // DBNull ve null kontrolü
-                {
-                    if (decimal.TryParse(dr[0].ToString(), out decimal tutar)) // decimal dönüşüm kontrolü
-                    {
-                        toplamtutar = tutar;
-                        ciro.Text = tutar.ToString("N2");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Veritabanından dönen değer decimal'e dönüştürülemedi.");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Veritabanından dönen değer null veya DBNull.");
-                }
-
-            }
-            dr.Close();
-            cmd.Dispose();
-
-            cmd = new SqlCommand("SELECT SUM(GiderTutar) FROM TBL_Gider ", con);
-            cmd.ExecuteNonQuery();
-            dr = cmd.ExecuteReader();
-
-            while (dr.Read())
-            {
-                if (dr[0] != DBNull.Value && dr[0] != null) // DBNull ve null kontrolü
-                {
-                    if (decimal.TryParse(dr[0].ToString(), out decimal tutar)) // decimal dönüşüm kontrolü
-                    {
-                        toplamtutar = tutar;
-                        gider.Text = tutar.ToString("N2");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Veritabanından dönen değer decimal'e dönüştürülemedi.");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Veritabanından dönen değer null veya DBNull.");
-                }
-
-            }
-            dr.Close();
-            cmd.Dispose();
-
-            cmd = new SqlCommand("SELECT SUM(HareketToplam) FROM TBL_TedarikciHareket", con);
-            cmd.ExecuteNonQuery();
-            dr = cmd.ExecuteReader();
-
-            while (dr.Read())
-            {
-                if (dr[0] != DBNull.Value && dr[0] != null) // DBNull ve null kontrolü
-                {
-                    if (decimal.TryParse(dr[0].ToString(), out decimal tutar)) // decimal dönüşüm kontrolü
-                    {
-                        toplamtutar = tutar;
-                        tedarikci.Text = tutar.ToString("N2");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Veritabanından dönen değer decimal'e dönüştürülemedi.");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Veritabanından dönen değer null veya DBNull.");
-                }
-
-            }
-
-
-
-
-            con.Close();
-        }
         private void button8_Click(object sender, EventArgs e)
         {
             Tedarikciler tedarik = new Tedarikciler();

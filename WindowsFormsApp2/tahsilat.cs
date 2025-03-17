@@ -130,6 +130,7 @@ namespace WindowsFormsApp2
 
         private void button3_Click(object sender, EventArgs e)
         {
+            reportViewer1.RefreshReport();
             reportViewer1.PrintDialog();
            
         }
@@ -165,6 +166,11 @@ namespace WindowsFormsApp2
         }
 
         private void ilkTarih_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
         }

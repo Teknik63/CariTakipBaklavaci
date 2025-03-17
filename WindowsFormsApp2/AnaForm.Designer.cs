@@ -300,9 +300,9 @@
             this.tedarikci.ForeColor = System.Drawing.Color.Red;
             this.tedarikci.Location = new System.Drawing.Point(142, 355);
             this.tedarikci.Name = "tedarikci";
-            this.tedarikci.Size = new System.Drawing.Size(102, 14);
+            this.tedarikci.Size = new System.Drawing.Size(68, 14);
             this.tedarikci.TabIndex = 22;
-            this.tedarikci.Text = "Yapılan Satışlar";
+            this.tedarikci.Text = "Ödemeler";
             // 
             // label3
             // 
