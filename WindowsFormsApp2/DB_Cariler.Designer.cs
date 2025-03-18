@@ -6495,7 +6495,7 @@ SELECT HareketID, HareketCariID, HareketCariUnvan, HareketUrun, HareketUrunAdet,
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[6];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[8];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT HareketID, HareketCariID, HareketCariUnvan, HareketUrun, HareketUrunAdet, " +
@@ -6509,47 +6509,63 @@ SELECT HareketID, HareketCariID, HareketCariUnvan, HareketUrun, HareketUrunAdet,
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "HareketID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = @"INSERT INTO [dbo].[TBL_CariHareket] ([HareketCariID], [HareketCariUnvan], [HareketUrun], [HareketUrunAdet], [HareketUrunFiyat], [HareketTepsiUcreti], [HareketKosebentUcreti], [HareketKargoUcreti], [HareketTarih], [HareketToplam]) VALUES (@HareketCariID, @HareketCariUnvan, @HareketUrun, @HareketUrunAdet, @HareketUrunFiyat, @HareketTepsiUcreti, @HareketKosebentUcreti, @HareketKargoUcreti, @HareketTarih, @HareketToplam);";
+            this._commandCollection[2].CommandText = @"SELECT        HareketID, HareketCariID, HareketCariUnvan, HareketUrun, HareketUrunAdet, HareketUrunFiyat, HareketTepsiUcreti, HareketKosebentUcreti, HareketKargoUcreti, HareketTarih, HareketToplam
+FROM            TBL_CariHareket
+WHERE        (HareketCariUnvan = @HareketCariUnvan)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketCariID", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "HareketCariID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketCariUnvan", global::System.Data.SqlDbType.NVarChar, 150, global::System.Data.ParameterDirection.Input, 0, 0, "HareketCariUnvan", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketUrun", global::System.Data.SqlDbType.NVarChar, 150, global::System.Data.ParameterDirection.Input, 0, 0, "HareketUrun", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketUrunAdet", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "HareketUrunAdet", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketUrunFiyat", global::System.Data.SqlDbType.Money, 8, global::System.Data.ParameterDirection.Input, 0, 0, "HareketUrunFiyat", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketTepsiUcreti", global::System.Data.SqlDbType.Money, 8, global::System.Data.ParameterDirection.Input, 0, 0, "HareketTepsiUcreti", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketKosebentUcreti", global::System.Data.SqlDbType.Money, 8, global::System.Data.ParameterDirection.Input, 0, 0, "HareketKosebentUcreti", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketKargoUcreti", global::System.Data.SqlDbType.Money, 8, global::System.Data.ParameterDirection.Input, 0, 0, "HareketKargoUcreti", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketTarih", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "HareketTarih", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketToplam", global::System.Data.SqlDbType.Money, 8, global::System.Data.ParameterDirection.Input, 0, 0, "HareketToplam", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "SELECT        SUM(HareketToplam) AS Expr1\r\nFROM            TBL_CariHareket";
+            this._commandCollection[3].CommandText = @"SELECT        HareketID, HareketCariID, HareketCariUnvan, HareketUrun, HareketUrunAdet, HareketUrunFiyat, HareketTepsiUcreti, HareketKosebentUcreti, HareketKargoUcreti, HareketTarih, HareketToplam
+FROM            TBL_CariHareket
+WHERE        (HareketTarih >= @BaslangicTarihi) AND (HareketTarih <= @BitisTarihi) AND (HareketCariUnvan = @HareketCariUnvan)";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BaslangicTarihi", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "HareketTarih", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BitisTarihi", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "HareketTarih", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketCariUnvan", global::System.Data.SqlDbType.NVarChar, 150, global::System.Data.ParameterDirection.Input, 0, 0, "HareketCariUnvan", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = "SELECT        SUM(HareketToplam) AS Expr1\r\nFROM            TBL_CariHareket\r\nWHERE" +
-                "        (HareketTarih >= @BaslangicTarihi) AND (HareketTarih <= @BitisTarihi)";
+            this._commandCollection[4].CommandText = @"INSERT INTO [dbo].[TBL_CariHareket] ([HareketCariID], [HareketCariUnvan], [HareketUrun], [HareketUrunAdet], [HareketUrunFiyat], [HareketTepsiUcreti], [HareketKosebentUcreti], [HareketKargoUcreti], [HareketTarih], [HareketToplam]) VALUES (@HareketCariID, @HareketCariUnvan, @HareketUrun, @HareketUrunAdet, @HareketUrunFiyat, @HareketTepsiUcreti, @HareketKosebentUcreti, @HareketKargoUcreti, @HareketTarih, @HareketToplam);";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BaslangicTarihi", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "HareketTarih", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BitisTarihi", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "HareketTarih", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketCariID", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "HareketCariID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketCariUnvan", global::System.Data.SqlDbType.NVarChar, 150, global::System.Data.ParameterDirection.Input, 0, 0, "HareketCariUnvan", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketUrun", global::System.Data.SqlDbType.NVarChar, 150, global::System.Data.ParameterDirection.Input, 0, 0, "HareketUrun", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketUrunAdet", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "HareketUrunAdet", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketUrunFiyat", global::System.Data.SqlDbType.Money, 8, global::System.Data.ParameterDirection.Input, 0, 0, "HareketUrunFiyat", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketTepsiUcreti", global::System.Data.SqlDbType.Money, 8, global::System.Data.ParameterDirection.Input, 0, 0, "HareketTepsiUcreti", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketKosebentUcreti", global::System.Data.SqlDbType.Money, 8, global::System.Data.ParameterDirection.Input, 0, 0, "HareketKosebentUcreti", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketKargoUcreti", global::System.Data.SqlDbType.Money, 8, global::System.Data.ParameterDirection.Input, 0, 0, "HareketKargoUcreti", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketTarih", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "HareketTarih", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketToplam", global::System.Data.SqlDbType.Money, 8, global::System.Data.ParameterDirection.Input, 0, 0, "HareketToplam", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[5].Connection = this.Connection;
-            this._commandCollection[5].CommandText = @"UPDATE       TBL_CariHareket
+            this._commandCollection[5].CommandText = "SELECT        SUM(HareketToplam) AS Expr1\r\nFROM            TBL_CariHareket";
+            this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[6] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[6].Connection = this.Connection;
+            this._commandCollection[6].CommandText = "SELECT        SUM(HareketToplam) AS Expr1\r\nFROM            TBL_CariHareket\r\nWHERE" +
+                "        (HareketTarih >= @BaslangicTarihi) AND (HareketTarih <= @BitisTarihi)";
+            this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BaslangicTarihi", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "HareketTarih", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BitisTarihi", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "HareketTarih", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[7] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[7].Connection = this.Connection;
+            this._commandCollection[7].CommandText = @"UPDATE       TBL_CariHareket
 SET                HareketCariID = @HareketCariID, HareketCariUnvan = @HareketCariUnvan, HareketUrun = @HareketUrun, HareketUrunAdet = @HareketUrunAdet, HareketUrunFiyat = @HareketUrunFiyat, 
                          HareketTepsiUcreti = @HareketTepsiUcreti, HareketKosebentUcreti = @HareketKosebentUcreti, HareketKargoUcreti = @HareketKargoUcreti, HareketTarih = @HareketTarih, HareketToplam = @HareketToplam
 WHERE        (HareketID = @Original_HareketID)";
-            this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketCariID", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "HareketCariID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketCariUnvan", global::System.Data.SqlDbType.NVarChar, 150, global::System.Data.ParameterDirection.Input, 0, 0, "HareketCariUnvan", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketUrun", global::System.Data.SqlDbType.NVarChar, 150, global::System.Data.ParameterDirection.Input, 0, 0, "HareketUrun", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketUrunAdet", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "HareketUrunAdet", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketUrunFiyat", global::System.Data.SqlDbType.Money, 8, global::System.Data.ParameterDirection.Input, 0, 0, "HareketUrunFiyat", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketTepsiUcreti", global::System.Data.SqlDbType.Money, 8, global::System.Data.ParameterDirection.Input, 0, 0, "HareketTepsiUcreti", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketKosebentUcreti", global::System.Data.SqlDbType.Money, 8, global::System.Data.ParameterDirection.Input, 0, 0, "HareketKosebentUcreti", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketKargoUcreti", global::System.Data.SqlDbType.Money, 8, global::System.Data.ParameterDirection.Input, 0, 0, "HareketKargoUcreti", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketTarih", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "HareketTarih", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketToplam", global::System.Data.SqlDbType.Money, 8, global::System.Data.ParameterDirection.Input, 0, 0, "HareketToplam", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_HareketID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "HareketID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[7].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketCariID", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "HareketCariID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketCariUnvan", global::System.Data.SqlDbType.NVarChar, 150, global::System.Data.ParameterDirection.Input, 0, 0, "HareketCariUnvan", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketUrun", global::System.Data.SqlDbType.NVarChar, 150, global::System.Data.ParameterDirection.Input, 0, 0, "HareketUrun", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketUrunAdet", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "HareketUrunAdet", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketUrunFiyat", global::System.Data.SqlDbType.Money, 8, global::System.Data.ParameterDirection.Input, 0, 0, "HareketUrunFiyat", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketTepsiUcreti", global::System.Data.SqlDbType.Money, 8, global::System.Data.ParameterDirection.Input, 0, 0, "HareketTepsiUcreti", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketKosebentUcreti", global::System.Data.SqlDbType.Money, 8, global::System.Data.ParameterDirection.Input, 0, 0, "HareketKosebentUcreti", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketKargoUcreti", global::System.Data.SqlDbType.Money, 8, global::System.Data.ParameterDirection.Input, 0, 0, "HareketKargoUcreti", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketTarih", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "HareketTarih", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketToplam", global::System.Data.SqlDbType.Money, 8, global::System.Data.ParameterDirection.Input, 0, 0, "HareketToplam", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_HareketID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "HareketID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6571,6 +6587,102 @@ WHERE        (HareketID = @Original_HareketID)";
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual DB_Cariler.TBL_CariHareketDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            DB_Cariler.TBL_CariHareketDataTable dataTable = new DB_Cariler.TBL_CariHareketDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByHareketCariUnvan(DB_Cariler.TBL_CariHareketDataTable dataTable, string HareketCariUnvan) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((HareketCariUnvan == null)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(HareketCariUnvan));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual DB_Cariler.TBL_CariHareketDataTable GetDataByHareketCariUnvan(string HareketCariUnvan) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((HareketCariUnvan == null)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(HareketCariUnvan));
+            }
+            DB_Cariler.TBL_CariHareketDataTable dataTable = new DB_Cariler.TBL_CariHareketDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByTarih(DB_Cariler.TBL_CariHareketDataTable dataTable, string BaslangicTarihi, string BitisTarihi, string HareketCariUnvan) {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
+            if ((BaslangicTarihi == null)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(BaslangicTarihi));
+            }
+            if ((BitisTarihi == null)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(BitisTarihi));
+            }
+            if ((HareketCariUnvan == null)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(HareketCariUnvan));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual DB_Cariler.TBL_CariHareketDataTable GetDataByTarih(string BaslangicTarihi, string BitisTarihi, string HareketCariUnvan) {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
+            if ((BaslangicTarihi == null)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(BaslangicTarihi));
+            }
+            if ((BitisTarihi == null)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(BitisTarihi));
+            }
+            if ((HareketCariUnvan == null)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(HareketCariUnvan));
+            }
             DB_Cariler.TBL_CariHareketDataTable dataTable = new DB_Cariler.TBL_CariHareketDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -7031,7 +7143,7 @@ WHERE        (HareketID = @Original_HareketID)";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
         public virtual int InsertHareket(string HareketCariID, string HareketCariUnvan, string HareketUrun, string HareketUrunAdet, global::System.Nullable<decimal> HareketUrunFiyat, global::System.Nullable<decimal> HareketTepsiUcreti, global::System.Nullable<decimal> HareketKosebentUcreti, global::System.Nullable<decimal> HareketKargoUcreti, string HareketTarih, global::System.Nullable<decimal> HareketToplam) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[4];
             if ((HareketCariID == null)) {
                 command.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -7113,7 +7225,7 @@ WHERE        (HareketID = @Original_HareketID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual global::System.Nullable<decimal> ScalarCariCiro() {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[3];
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[5];
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -7141,7 +7253,7 @@ WHERE        (HareketID = @Original_HareketID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual global::System.Nullable<decimal> ScalarCariCiroTarihli(string BaslangicTarihi, string BitisTarihi) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[4];
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[6];
             if ((BaslangicTarihi == null)) {
                 command.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -7182,7 +7294,7 @@ WHERE        (HareketID = @Original_HareketID)";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
         public virtual int UpdateHareket(string HareketCariID, string HareketCariUnvan, string HareketUrun, string HareketUrunAdet, global::System.Nullable<decimal> HareketUrunFiyat, global::System.Nullable<decimal> HareketTepsiUcreti, global::System.Nullable<decimal> HareketKosebentUcreti, global::System.Nullable<decimal> HareketKargoUcreti, string HareketTarih, global::System.Nullable<decimal> HareketToplam, int Original_HareketID) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[5];
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[7];
             if ((HareketCariID == null)) {
                 command.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -10215,7 +10327,7 @@ SELECT HareketID, HareketTedarikciID, HareketTedarikciUnvan, HareketTedarikciHam
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[6];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[7];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT HareketID, HareketTedarikciID, HareketTedarikciUnvan, HareketTedarikciHamM" +
@@ -10231,36 +10343,43 @@ SELECT HareketID, HareketTedarikciID, HareketTedarikciUnvan, HareketTedarikciHam
             this._commandCollection[2].Connection = this.Connection;
             this._commandCollection[2].CommandText = @"SELECT        HareketID, HareketTedarikciID, HareketTedarikciUnvan, HareketTedarikciHamMadde, HareketTedarikciHamMaddemiktar, HareketTedarikciHamMaddeFiyat, HareketTarih, HareketToplam
 FROM            TBL_TedarikciHareket
-WHERE        (HareketTarih >= @BaslangicTarihi) AND (HareketTarih <= @BitisTarihi) AND (HareketTedarikciUnvan = @HareketTedarikciUnvan)";
+WHERE        (HareketTedarikciUnvan = @HareketTedarikciUnvan)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BaslangicTarihi", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "HareketTarih", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BitisTarihi", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "HareketTarih", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketTedarikciUnvan", global::System.Data.SqlDbType.NVarChar, 150, global::System.Data.ParameterDirection.Input, 0, 0, "HareketTedarikciUnvan", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = @"INSERT INTO TBL_TedarikciHareket
-                         (HareketTedarikciID, HareketTedarikciUnvan, HareketTedarikciHamMadde, HareketTedarikciHamMaddemiktar, HareketTedarikciHamMaddeFiyat, HareketTarih, HareketToplam)
-VALUES        (@HareketTedarikciID,@HareketTedarikciUnvan,@HareketTedarikciHamMadde,@HareketTedarikciHamMaddemiktar,@HareketTedarikciHamMaddeFiyat,@HareketTarih,@HareketToplam)";
+            this._commandCollection[3].CommandText = @"SELECT        HareketID, HareketTedarikciID, HareketTedarikciUnvan, HareketTedarikciHamMadde, HareketTedarikciHamMaddemiktar, HareketTedarikciHamMaddeFiyat, HareketTarih, HareketToplam
+FROM            TBL_TedarikciHareket
+WHERE        (HareketTarih >= @BaslangicTarihi) AND (HareketTarih <= @BitisTarihi) AND (HareketTedarikciUnvan = @HareketTedarikciUnvan)";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketTedarikciID", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "HareketTedarikciID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BaslangicTarihi", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "HareketTarih", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BitisTarihi", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "HareketTarih", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketTedarikciUnvan", global::System.Data.SqlDbType.NVarChar, 150, global::System.Data.ParameterDirection.Input, 0, 0, "HareketTedarikciUnvan", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketTedarikciHamMadde", global::System.Data.SqlDbType.NVarChar, 150, global::System.Data.ParameterDirection.Input, 0, 0, "HareketTedarikciHamMadde", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketTedarikciHamMaddemiktar", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "HareketTedarikciHamMaddemiktar", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketTedarikciHamMaddeFiyat", global::System.Data.SqlDbType.Money, 8, global::System.Data.ParameterDirection.Input, 0, 0, "HareketTedarikciHamMaddeFiyat", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketTarih", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "HareketTarih", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketToplam", global::System.Data.SqlDbType.Money, 8, global::System.Data.ParameterDirection.Input, 0, 0, "HareketToplam", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = "SELECT        SUM(HareketToplam) AS Expr1\r\nFROM            TBL_TedarikciHareket";
+            this._commandCollection[4].CommandText = @"INSERT INTO TBL_TedarikciHareket
+                         (HareketTedarikciID, HareketTedarikciUnvan, HareketTedarikciHamMadde, HareketTedarikciHamMaddemiktar, HareketTedarikciHamMaddeFiyat, HareketTarih, HareketToplam)
+VALUES        (@HareketTedarikciID,@HareketTedarikciUnvan,@HareketTedarikciHamMadde,@HareketTedarikciHamMaddemiktar,@HareketTedarikciHamMaddeFiyat,@HareketTarih,@HareketToplam)";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketTedarikciID", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "HareketTedarikciID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketTedarikciUnvan", global::System.Data.SqlDbType.NVarChar, 150, global::System.Data.ParameterDirection.Input, 0, 0, "HareketTedarikciUnvan", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketTedarikciHamMadde", global::System.Data.SqlDbType.NVarChar, 150, global::System.Data.ParameterDirection.Input, 0, 0, "HareketTedarikciHamMadde", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketTedarikciHamMaddemiktar", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "HareketTedarikciHamMaddemiktar", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketTedarikciHamMaddeFiyat", global::System.Data.SqlDbType.Money, 8, global::System.Data.ParameterDirection.Input, 0, 0, "HareketTedarikciHamMaddeFiyat", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketTarih", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "HareketTarih", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HareketToplam", global::System.Data.SqlDbType.Money, 8, global::System.Data.ParameterDirection.Input, 0, 0, "HareketToplam", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[5].Connection = this.Connection;
-            this._commandCollection[5].CommandText = "SELECT        SUM(HareketToplam) AS Expr1\r\nFROM            TBL_TedarikciHareket\r\n" +
+            this._commandCollection[5].CommandText = "SELECT        SUM(HareketToplam) AS Expr1\r\nFROM            TBL_TedarikciHareket";
+            this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[6] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[6].Connection = this.Connection;
+            this._commandCollection[6].CommandText = "SELECT        SUM(HareketToplam) AS Expr1\r\nFROM            TBL_TedarikciHareket\r\n" +
                 "WHERE        (HareketTarih >= @BaslangicTarihi) AND (HareketTarih <= @BitisTarih" +
                 "i)";
-            this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BaslangicTarihi", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "HareketTarih", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BitisTarihi", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "HareketTarih", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BaslangicTarihi", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "HareketTarih", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BitisTarihi", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "HareketTarih", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10291,8 +10410,44 @@ VALUES        (@HareketTedarikciID,@HareketTedarikciUnvan,@HareketTedarikciHamMa
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillByTarih(DB_Cariler.TBL_TedarikciHareketDataTable dataTable, string BaslangicTarihi, string BitisTarihi, string HareketTedarikciUnvan) {
+        public virtual int FillByHareketTedarikciUnvan(DB_Cariler.TBL_TedarikciHareketDataTable dataTable, string HareketTedarikciUnvan) {
             this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((HareketTedarikciUnvan == null)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(HareketTedarikciUnvan));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual DB_Cariler.TBL_TedarikciHareketDataTable GetDataByHareketTedarikciUnvan(string HareketTedarikciUnvan) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((HareketTedarikciUnvan == null)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(HareketTedarikciUnvan));
+            }
+            DB_Cariler.TBL_TedarikciHareketDataTable dataTable = new DB_Cariler.TBL_TedarikciHareketDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByTarih(DB_Cariler.TBL_TedarikciHareketDataTable dataTable, string BaslangicTarihi, string BitisTarihi, string HareketTedarikciUnvan) {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
             if ((BaslangicTarihi == null)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -10323,7 +10478,7 @@ VALUES        (@HareketTedarikciID,@HareketTedarikciUnvan,@HareketTedarikciHamMa
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual DB_Cariler.TBL_TedarikciHareketDataTable GetDataByTarih(string BaslangicTarihi, string BitisTarihi, string HareketTedarikciUnvan) {
-            this.Adapter.SelectCommand = this.CommandCollection[2];
+            this.Adapter.SelectCommand = this.CommandCollection[3];
             if ((BaslangicTarihi == null)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -10691,7 +10846,7 @@ VALUES        (@HareketTedarikciID,@HareketTedarikciUnvan,@HareketTedarikciHamMa
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
         public virtual int InsertTedarikciHareket(string HareketTedarikciID, string HareketTedarikciUnvan, string HareketTedarikciHamMadde, string HareketTedarikciHamMaddemiktar, global::System.Nullable<decimal> HareketTedarikciHamMaddeFiyat, string HareketTarih, global::System.Nullable<decimal> HareketToplam) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[3];
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[4];
             if ((HareketTedarikciID == null)) {
                 command.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -10755,7 +10910,7 @@ VALUES        (@HareketTedarikciID,@HareketTedarikciUnvan,@HareketTedarikciHamMa
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual global::System.Nullable<decimal> ScalarTedarikciBorc() {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[4];
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[5];
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -10783,7 +10938,7 @@ VALUES        (@HareketTedarikciID,@HareketTedarikciUnvan,@HareketTedarikciHamMa
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual global::System.Nullable<decimal> ScalarTedarikciBorcTarihli(string BaslangicTarihi, string BitisTarihi) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[5];
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[6];
             if ((BaslangicTarihi == null)) {
                 command.Parameters[0].Value = global::System.DBNull.Value;
             }

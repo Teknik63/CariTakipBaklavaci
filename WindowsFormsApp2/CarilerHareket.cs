@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -85,6 +86,7 @@ namespace WindowsFormsApp2
                     this.tBL_CariHareketTableAdapter.Fill(this.dB_Cariler.TBL_CariHareket);
 
                     Temizle();
+                    reportViewer1.RefreshReport();
                 }
                 else
                 {
@@ -116,6 +118,7 @@ namespace WindowsFormsApp2
             while (dr.Read())
             {
                 txtCariAd.Items.Add(dr["CariUnvan"]);
+                sorguCmb.Items.Add(dr["CariUnvan"]);
             }
 
             cmd.Dispose();
@@ -130,7 +133,13 @@ namespace WindowsFormsApp2
             }
             con.Close();
 
+            System.Drawing.Printing.PageSettings pg = new System.Drawing.Printing.PageSettings();
 
+            pg.Margins = new Margins(2, 1, 2, 1);
+
+            pg.Landscape = false;
+            reportViewer1.SetPageSettings(pg);
+            this.reportViewer1.RefreshReport();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -171,7 +180,7 @@ namespace WindowsFormsApp2
                 ID = "";
                 con.Close();
             }
-
+            reportViewer1.RefreshReport();
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -195,6 +204,23 @@ namespace WindowsFormsApp2
                 toplam = dg.Cells[10].Value.ToString();
                 HarehetID = Convert.ToInt32(dg.Cells[0].Value.ToString());
 
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            reportViewer1.PrintDialog();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                tBL_CariHareketTableAdapter.FillByHareketCariUnvan(dB_Cariler.TBL_CariHareket, sorguCmb.Text);
+            }
+            else
+            {
+                tBL_CariHareketTableAdapter.FillByTarih(dB_Cariler.TBL_CariHareket, ilkTarih.Value.ToString("yyyy.MM.dd"), sonTarih.Value.ToString("yyyy.MM.dd"), sorguCmb.Text);
             }
         }
 

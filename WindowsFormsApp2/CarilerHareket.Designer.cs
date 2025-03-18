@@ -29,11 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.tBL_CariHareketBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dB_Cariler = new WindowsFormsApp2.DB_Cariler();
             this.Bakiye = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtCariAd = new System.Windows.Forms.ComboBox();
@@ -50,8 +53,6 @@
             this.hareketKargoUcretiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hareketTarihDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hareketToplamDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tBL_CariHareketBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dB_Cariler = new WindowsFormsApp2.DB_Cariler();
             this.txtUrun = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
@@ -72,11 +73,31 @@
             this.tableAdapterManager = new WindowsFormsApp2.DB_CarilerTableAdapters.TableAdapterManager();
             this.tBL_CarilerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tBL_CarilerTableAdapter = new WindowsFormsApp2.DB_CarilerTableAdapters.TBL_CarilerTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.button3 = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.sorguCmb = new System.Windows.Forms.ComboBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.sonTarih = new System.Windows.Forms.DateTimePicker();
+            this.ilkTarih = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.tBL_CariHareketBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dB_Cariler)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tBL_CarilerBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // tBL_CariHareketBindingSource
+            // 
+            this.tBL_CariHareketBindingSource.DataMember = "TBL_CariHareket";
+            this.tBL_CariHareketBindingSource.DataSource = this.dB_Cariler;
+            // 
+            // dB_Cariler
+            // 
+            this.dB_Cariler.DataSetName = "DB_Cariler";
+            this.dB_Cariler.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // Bakiye
             // 
@@ -104,7 +125,7 @@
             this.txtCariAd.FormattingEnabled = true;
             this.txtCariAd.Location = new System.Drawing.Point(12, 29);
             this.txtCariAd.Name = "txtCariAd";
-            this.txtCariAd.Size = new System.Drawing.Size(246, 22);
+            this.txtCariAd.Size = new System.Drawing.Size(236, 22);
             this.txtCariAd.TabIndex = 27;
             // 
             // label2
@@ -188,9 +209,9 @@
             // hareketUrunFiyatDataGridViewTextBoxColumn
             // 
             this.hareketUrunFiyatDataGridViewTextBoxColumn.DataPropertyName = "HareketUrunFiyat";
-            dataGridViewCellStyle1.Format = "C2";
-            dataGridViewCellStyle1.NullValue = null;
-            this.hareketUrunFiyatDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle11.Format = "C2";
+            dataGridViewCellStyle11.NullValue = null;
+            this.hareketUrunFiyatDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle11;
             this.hareketUrunFiyatDataGridViewTextBoxColumn.HeaderText = "Ürün Fiyatı";
             this.hareketUrunFiyatDataGridViewTextBoxColumn.Name = "hareketUrunFiyatDataGridViewTextBoxColumn";
             this.hareketUrunFiyatDataGridViewTextBoxColumn.ReadOnly = true;
@@ -198,9 +219,9 @@
             // hareketTepsiUcretiDataGridViewTextBoxColumn
             // 
             this.hareketTepsiUcretiDataGridViewTextBoxColumn.DataPropertyName = "HareketTepsiUcreti";
-            dataGridViewCellStyle2.Format = "C2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.hareketTepsiUcretiDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle12.Format = "C2";
+            dataGridViewCellStyle12.NullValue = null;
+            this.hareketTepsiUcretiDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle12;
             this.hareketTepsiUcretiDataGridViewTextBoxColumn.HeaderText = "Tepsi Ücreti";
             this.hareketTepsiUcretiDataGridViewTextBoxColumn.Name = "hareketTepsiUcretiDataGridViewTextBoxColumn";
             this.hareketTepsiUcretiDataGridViewTextBoxColumn.ReadOnly = true;
@@ -208,9 +229,9 @@
             // hareketKosebentUcretiDataGridViewTextBoxColumn
             // 
             this.hareketKosebentUcretiDataGridViewTextBoxColumn.DataPropertyName = "HareketKosebentUcreti";
-            dataGridViewCellStyle3.Format = "C2";
-            dataGridViewCellStyle3.NullValue = null;
-            this.hareketKosebentUcretiDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle13.Format = "C2";
+            dataGridViewCellStyle13.NullValue = null;
+            this.hareketKosebentUcretiDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle13;
             this.hareketKosebentUcretiDataGridViewTextBoxColumn.HeaderText = "Köşebent Ücreti";
             this.hareketKosebentUcretiDataGridViewTextBoxColumn.Name = "hareketKosebentUcretiDataGridViewTextBoxColumn";
             this.hareketKosebentUcretiDataGridViewTextBoxColumn.ReadOnly = true;
@@ -218,9 +239,9 @@
             // hareketKargoUcretiDataGridViewTextBoxColumn
             // 
             this.hareketKargoUcretiDataGridViewTextBoxColumn.DataPropertyName = "HareketKargoUcreti";
-            dataGridViewCellStyle4.Format = "C2";
-            dataGridViewCellStyle4.NullValue = null;
-            this.hareketKargoUcretiDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle14.Format = "C2";
+            dataGridViewCellStyle14.NullValue = null;
+            this.hareketKargoUcretiDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle14;
             this.hareketKargoUcretiDataGridViewTextBoxColumn.HeaderText = "Kargo Ücreti";
             this.hareketKargoUcretiDataGridViewTextBoxColumn.Name = "hareketKargoUcretiDataGridViewTextBoxColumn";
             this.hareketKargoUcretiDataGridViewTextBoxColumn.ReadOnly = true;
@@ -235,37 +256,27 @@
             // hareketToplamDataGridViewTextBoxColumn
             // 
             this.hareketToplamDataGridViewTextBoxColumn.DataPropertyName = "HareketToplam";
-            dataGridViewCellStyle5.Format = "C2";
-            dataGridViewCellStyle5.NullValue = null;
-            this.hareketToplamDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle15.Format = "C2";
+            dataGridViewCellStyle15.NullValue = null;
+            this.hareketToplamDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle15;
             this.hareketToplamDataGridViewTextBoxColumn.HeaderText = "Toplam Tutar";
             this.hareketToplamDataGridViewTextBoxColumn.Name = "hareketToplamDataGridViewTextBoxColumn";
             this.hareketToplamDataGridViewTextBoxColumn.ReadOnly = true;
             this.hareketToplamDataGridViewTextBoxColumn.Width = 150;
             // 
-            // tBL_CariHareketBindingSource
-            // 
-            this.tBL_CariHareketBindingSource.DataMember = "TBL_CariHareket";
-            this.tBL_CariHareketBindingSource.DataSource = this.dB_Cariler;
-            // 
-            // dB_Cariler
-            // 
-            this.dB_Cariler.DataSetName = "DB_Cariler";
-            this.dB_Cariler.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // txtUrun
             // 
             this.txtUrun.DisplayMember = "1";
             this.txtUrun.FormattingEnabled = true;
-            this.txtUrun.Location = new System.Drawing.Point(264, 29);
+            this.txtUrun.Location = new System.Drawing.Point(254, 29);
             this.txtUrun.Name = "txtUrun";
-            this.txtUrun.Size = new System.Drawing.Size(246, 22);
+            this.txtUrun.Size = new System.Drawing.Size(217, 22);
             this.txtUrun.TabIndex = 36;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(261, 11);
+            this.label3.Location = new System.Drawing.Point(251, 11);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(60, 14);
@@ -277,7 +288,7 @@
             this.button1.BackColor = System.Drawing.Color.Lime;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(1003, 11);
+            this.button1.Location = new System.Drawing.Point(964, 11);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(85, 40);
             this.button1.TabIndex = 51;
@@ -288,7 +299,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(660, 11);
+            this.label8.Location = new System.Drawing.Point(621, 11);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(37, 14);
@@ -298,7 +309,7 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(663, 29);
+            this.dateTimePicker1.Location = new System.Drawing.Point(624, 29);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(114, 22);
             this.dateTimePicker1.TabIndex = 49;
@@ -306,7 +317,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(582, 11);
+            this.label7.Location = new System.Drawing.Point(543, 11);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(76, 14);
@@ -315,7 +326,7 @@
             // 
             // txtKargoUcreti
             // 
-            this.txtKargoUcreti.Location = new System.Drawing.Point(936, 29);
+            this.txtKargoUcreti.Location = new System.Drawing.Point(897, 29);
             this.txtKargoUcreti.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtKargoUcreti.Name = "txtKargoUcreti";
             this.txtKargoUcreti.Size = new System.Drawing.Size(60, 22);
@@ -324,7 +335,7 @@
             // 
             // txtKoseBentUcreti
             // 
-            this.txtKoseBentUcreti.Location = new System.Drawing.Point(868, 29);
+            this.txtKoseBentUcreti.Location = new System.Drawing.Point(829, 29);
             this.txtKoseBentUcreti.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtKoseBentUcreti.Name = "txtKoseBentUcreti";
             this.txtKoseBentUcreti.Size = new System.Drawing.Size(60, 22);
@@ -333,7 +344,7 @@
             // 
             // txtTepsiUcreti
             // 
-            this.txtTepsiUcreti.Location = new System.Drawing.Point(784, 29);
+            this.txtTepsiUcreti.Location = new System.Drawing.Point(745, 29);
             this.txtTepsiUcreti.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtTepsiUcreti.Name = "txtTepsiUcreti";
             this.txtTepsiUcreti.Size = new System.Drawing.Size(76, 22);
@@ -342,7 +353,7 @@
             // 
             // txtFiyat
             // 
-            this.txtFiyat.Location = new System.Drawing.Point(582, 29);
+            this.txtFiyat.Location = new System.Drawing.Point(543, 29);
             this.txtFiyat.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtFiyat.Name = "txtFiyat";
             this.txtFiyat.Size = new System.Drawing.Size(74, 22);
@@ -351,7 +362,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(514, 11);
+            this.label4.Location = new System.Drawing.Point(475, 11);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(36, 14);
@@ -360,7 +371,7 @@
             // 
             // txtAdet
             // 
-            this.txtAdet.Location = new System.Drawing.Point(517, 29);
+            this.txtAdet.Location = new System.Drawing.Point(478, 29);
             this.txtAdet.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtAdet.Name = "txtAdet";
             this.txtAdet.Size = new System.Drawing.Size(57, 22);
@@ -369,7 +380,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(781, 11);
+            this.label6.Location = new System.Drawing.Point(742, 11);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(39, 14);
@@ -379,7 +390,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(865, 11);
+            this.label9.Location = new System.Drawing.Point(826, 11);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(67, 14);
@@ -389,7 +400,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(933, 11);
+            this.label10.Location = new System.Drawing.Point(894, 11);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(44, 14);
@@ -401,9 +412,9 @@
             this.button2.BackColor = System.Drawing.Color.Salmon;
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(1094, 11);
+            this.button2.Location = new System.Drawing.Point(1055, 11);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(85, 40);
+            this.button2.Size = new System.Drawing.Size(79, 40);
             this.button2.TabIndex = 55;
             this.button2.Text = "Sipariş Sil";
             this.button2.UseVisualStyleBackColor = false;
@@ -419,6 +430,7 @@
             this.tableAdapterManager.TBL_CariHareketTableAdapter = this.tBL_CariHareketTableAdapter;
             this.tableAdapterManager.TBL_CarilerTableAdapter = null;
             this.tableAdapterManager.TBL_GiderTableAdapter = null;
+            this.tableAdapterManager.TBL_OdemeTableAdapter = null;
             this.tableAdapterManager.TBL_TahsilatTableAdapter = null;
             this.tableAdapterManager.TBL_TedarikciHareketTableAdapter = null;
             this.tableAdapterManager.TBL_TedarikcilerTableAdapter = null;
@@ -435,12 +447,121 @@
             // 
             this.tBL_CarilerTableAdapter.ClearBeforeFill = true;
             // 
+            // reportViewer1
+            // 
+            reportDataSource3.Name = "DataSet1";
+            reportDataSource3.Value = this.tBL_CariHareketBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "WindowsFormsApp2.CarilerHareket.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(1338, 219);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(586, 246);
+            this.reportViewer1.TabIndex = 56;
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.Honeydew;
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Location = new System.Drawing.Point(1140, 11);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(82, 40);
+            this.button3.TabIndex = 57;
+            this.button3.Text = "Yazdır";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(444, 585);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(108, 18);
+            this.checkBox1.TabIndex = 65;
+            this.checkBox1.Text = "Ünvana Göre";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(251, 564);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(76, 14);
+            this.label5.TabIndex = 64;
+            this.label5.Text = "Müşteri Adı";
+            // 
+            // sorguCmb
+            // 
+            this.sorguCmb.FormattingEnabled = true;
+            this.sorguCmb.Location = new System.Drawing.Point(254, 581);
+            this.sorguCmb.Name = "sorguCmb";
+            this.sorguCmb.Size = new System.Drawing.Size(184, 22);
+            this.sorguCmb.TabIndex = 63;
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.Honeydew;
+            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Location = new System.Drawing.Point(560, 573);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(80, 31);
+            this.button4.TabIndex = 62;
+            this.button4.Text = "Getir";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(130, 564);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(65, 14);
+            this.label11.TabIndex = 61;
+            this.label11.Text = "Son Tarih";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(12, 564);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(56, 14);
+            this.label12.TabIndex = 60;
+            this.label12.Text = "İlk Tarih";
+            // 
+            // sonTarih
+            // 
+            this.sonTarih.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.sonTarih.Location = new System.Drawing.Point(133, 581);
+            this.sonTarih.Name = "sonTarih";
+            this.sonTarih.Size = new System.Drawing.Size(115, 22);
+            this.sonTarih.TabIndex = 59;
+            // 
+            // ilkTarih
+            // 
+            this.ilkTarih.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.ilkTarih.Location = new System.Drawing.Point(12, 581);
+            this.ilkTarih.Name = "ilkTarih";
+            this.ilkTarih.Size = new System.Drawing.Size(115, 22);
+            this.ilkTarih.TabIndex = 58;
+            // 
             // CarilerHareket
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Chocolate;
-            this.ClientSize = new System.Drawing.Size(1239, 581);
+            this.ClientSize = new System.Drawing.Size(1234, 624);
+            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.sorguCmb);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.sonTarih);
+            this.Controls.Add(this.ilkTarih);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
@@ -469,9 +590,9 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Müşteri İşlemleri";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tBL_CariHareketBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dB_Cariler)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tBL_CarilerBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -517,6 +638,16 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn hareketToplamDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource tBL_CarilerBindingSource;
         private DB_CarilerTableAdapters.TBL_CarilerTableAdapter tBL_CarilerTableAdapter;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox sorguCmb;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.DateTimePicker sonTarih;
+        private System.Windows.Forms.DateTimePicker ilkTarih;
     }
 }
 

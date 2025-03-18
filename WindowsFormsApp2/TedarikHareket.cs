@@ -75,7 +75,15 @@ namespace WindowsFormsApp2
 
         private void button4_Click(object sender, EventArgs e)
         {
-            tBL_TedarikciHareketTableAdapter.FillByTarih(dB_Cariler.TBL_TedarikciHareket, ilkTarih.Value.ToString("yyyy.MM.dd"), sonTarih.Value.ToString("yyyy.MM.dd"), sorguCmb.Text);
+            if(checkBox1.Checked)
+            {
+                tBL_TedarikciHareketTableAdapter.FillByHareketTedarikciUnvan(dB_Cariler.TBL_TedarikciHareket, sorguCmb.Text);
+            }
+            else
+            {
+                tBL_TedarikciHareketTableAdapter.FillByTarih(dB_Cariler.TBL_TedarikciHareket, ilkTarih.Value.ToString("yyyy.MM.dd"), sonTarih.Value.ToString("yyyy.MM.dd"), sorguCmb.Text);
+            }
+            
             this.reportViewer1.RefreshReport();
         }
 
@@ -88,6 +96,7 @@ namespace WindowsFormsApp2
             TBL_TedarikcilerTableAdapter td = new TBL_TedarikcilerTableAdapter();
             td.UpdateHareketBakiye(cariBakiye, Convert.ToInt32(ID));
             tBL_TedarikciHareketTableAdapter.Fill(this.dB_Cariler.TBL_TedarikciHareket);
+            reportViewer1.RefreshReport();
         }
 
         private void txtCariAd_SelectedIndexChanged(object sender, EventArgs e)
@@ -103,7 +112,7 @@ namespace WindowsFormsApp2
                 cariBakiye = Convert.ToDecimal(dr["TedarikBakiye"].ToString());
                 ID = dr["TedarikciID"].ToString();
             }
-            lblCariBakiye.Text = Convert.ToString(cariBakiye);
+            lblCariBakiye.Text = cariBakiye.ToString("C2");
             con.Close();
         }
 
@@ -115,6 +124,9 @@ namespace WindowsFormsApp2
             td.UpdateHareketBakiye(cariBakiye, Convert.ToInt32(ID));
             tBL_TedarikciHareketTableAdapter.DeleteTedarikciHareket(Convert.ToInt32(tahsilatID));
             tBL_TedarikciHareketTableAdapter.Fill(this.dB_Cariler.TBL_TedarikciHareket);
+            ID = "0";
+            tahsilatID = "0";
+            lblCariBakiye.Text = cariBakiye.ToString("C2");
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -131,10 +143,26 @@ namespace WindowsFormsApp2
                 dtTarih.Text = dg.Cells[6].Value.ToString();
                 txtMalzeme.Text = dg.Cells[3].Value.ToString();
                 txtMiktar.Text = dg.Cells[4].Value.ToString();
-                txtFiyat.Text = dg.Cells[5].Value.ToString();
+                txtFiyat.Text = string.Format("{0:N0}", dg.Cells[5].Value) ; ///string.Format("{0:N0}", tepsilerinUcreti)
                 tahsilatID = dg.Cells[0].Value.ToString();
                 ID = dg.Cells[1].Value.ToString();
                 tahsilatID = dg.Cells[0].Value.ToString();
+
+
+
+                SqlConnection con = new SqlConnection(tBL_TedarikciHareketTableAdapter.Connection.ConnectionString);
+                con.Open();
+                SqlCommand cmd = new SqlCommand("Select * From TBL_Tedarikciler WHERE TedarikUnvan=@TedarikUnvan", con); //VeriGuncelle.Parameters.AddWithValue("@adsoyad", adsoyadTextBox.Text);
+                cmd.Parameters.AddWithValue("@TedarikUnvan", txtCariAd.Text);
+                cmd.ExecuteNonQuery();
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    cariBakiye = Convert.ToDecimal(dr["TedarikBakiye"].ToString());
+                    ID = dr["TedarikciID"].ToString();
+                }
+                lblCariBakiye.Text = cariBakiye.ToString("C2");
+                con.Close();
             }
         }
     }

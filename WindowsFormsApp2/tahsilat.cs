@@ -96,6 +96,7 @@ namespace WindowsFormsApp2
             con.Close();
             this.tBL_TahsilatTableAdapter.Fill(this.dB_Cariler.TBL_Tahsilat);
             lblCariBakiye.Text = Convert.ToString(cariBakiye);
+            reportViewer1.RefreshReport();
         }
 
         private void txtCariAd_SelectedIndexChanged(object sender, EventArgs e)
@@ -130,7 +131,7 @@ namespace WindowsFormsApp2
 
         private void button3_Click(object sender, EventArgs e)
         {
-            reportViewer1.RefreshReport();
+           // reportViewer1.RefreshReport();
             reportViewer1.PrintDialog();
            
         }
@@ -138,6 +139,7 @@ namespace WindowsFormsApp2
         private void button4_Click(object sender, EventArgs e)
         {
             tBL_TahsilatTableAdapter.FillbyTarih(dB_Cariler.TBL_Tahsilat, ilkTarih.Value.ToString("yyyy.MM.dd"), sonTarih.Value.ToString("yyyy.MM.dd"),sorguCmb.Text);
+            reportViewer1.RefreshReport();
         }
 
         private void sorguCmb_SelectedIndexChanged(object sender, EventArgs e)

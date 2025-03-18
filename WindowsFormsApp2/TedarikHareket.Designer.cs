@@ -29,23 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TedarikHareket));
-            this.dB_Cariler = new WindowsFormsApp2.DB_Cariler();
-            this.tBL_TedarikciHareketBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tBL_TedarikciHareketTableAdapter = new WindowsFormsApp2.DB_CarilerTableAdapters.TBL_TedarikciHareketTableAdapter();
-            this.tableAdapterManager = new WindowsFormsApp2.DB_CarilerTableAdapters.TableAdapterManager();
             this.tBL_TedarikciHareketDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label9 = new System.Windows.Forms.Label();
             this.sorguCmb = new System.Windows.Forms.ComboBox();
             this.button4 = new System.Windows.Forms.Button();
@@ -68,38 +56,24 @@
             this.txtCariAd = new System.Windows.Forms.ComboBox();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.lblCariBakiye = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dB_Cariler)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tBL_TedarikciHareketBindingSource)).BeginInit();
+            this.label4 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.tBL_TedarikciHareketBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dB_Cariler = new WindowsFormsApp2.DB_Cariler();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tBL_TedarikciHareketTableAdapter = new WindowsFormsApp2.DB_CarilerTableAdapters.TBL_TedarikciHareketTableAdapter();
+            this.tableAdapterManager = new WindowsFormsApp2.DB_CarilerTableAdapters.TableAdapterManager();
             ((System.ComponentModel.ISupportInitialize)(this.tBL_TedarikciHareketDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tBL_TedarikciHareketBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dB_Cariler)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dB_Cariler
-            // 
-            this.dB_Cariler.DataSetName = "DB_Cariler";
-            this.dB_Cariler.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tBL_TedarikciHareketBindingSource
-            // 
-            this.tBL_TedarikciHareketBindingSource.DataMember = "TBL_TedarikciHareket";
-            this.tBL_TedarikciHareketBindingSource.DataSource = this.dB_Cariler;
-            // 
-            // tBL_TedarikciHareketTableAdapter
-            // 
-            this.tBL_TedarikciHareketTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.TBL_CariHareketTableAdapter = null;
-            this.tableAdapterManager.TBL_CarilerTableAdapter = null;
-            this.tableAdapterManager.TBL_GiderTableAdapter = null;
-            this.tableAdapterManager.TBL_OdemeTableAdapter = null;
-            this.tableAdapterManager.TBL_TahsilatTableAdapter = null;
-            this.tableAdapterManager.TBL_TedarikciHareketTableAdapter = this.tBL_TedarikciHareketTableAdapter;
-            this.tableAdapterManager.TBL_TedarikcilerTableAdapter = null;
-            this.tableAdapterManager.TBL_TedarikHammaddeTableAdapter = null;
-            this.tableAdapterManager.TBL_UrunlerTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = WindowsFormsApp2.DB_CarilerTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // tBL_TedarikciHareketDataGridView
             // 
@@ -125,70 +99,6 @@
             this.tBL_TedarikciHareketDataGridView.TabIndex = 1;
             this.tBL_TedarikciHareketDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tBL_TedarikciHareketDataGridView_CellClick);
             // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "HareketID";
-            this.dataGridViewTextBoxColumn1.HeaderText = "HareketID";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "HareketTedarikciID";
-            this.dataGridViewTextBoxColumn2.HeaderText = "ID";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "HareketTedarikciUnvan";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Firma Adı";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "HareketTedarikciHamMadde";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Malzeme";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "HareketTedarikciHamMaddemiktar";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Miktar";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "HareketTedarikciHamMaddeFiyat";
-            dataGridViewCellStyle1.Format = "C2";
-            dataGridViewCellStyle1.NullValue = null;
-            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewTextBoxColumn6.HeaderText = "Fiyat";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "HareketTarih";
-            this.dataGridViewTextBoxColumn7.HeaderText = "Tarih";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "HareketToplam";
-            dataGridViewCellStyle2.Format = "C2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewTextBoxColumn8.HeaderText = "Tutar";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.ReadOnly = true;
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -211,7 +121,7 @@
             this.button4.BackColor = System.Drawing.Color.Honeydew;
             this.button4.FlatAppearance.BorderSize = 0;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Location = new System.Drawing.Point(445, 510);
+            this.button4.Location = new System.Drawing.Point(561, 511);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(80, 31);
             this.button4.TabIndex = 31;
@@ -275,7 +185,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(93, 79);
             this.button2.TabIndex = 45;
-            this.button2.Text = "Iptal";
+            this.button2.Text = "Sil";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -382,7 +292,7 @@
             reportDataSource1.Value = this.tBL_TedarikciHareketBindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "WindowsFormsApp2.TedarikHareket.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(583, 388);
+            this.reportViewer1.Location = new System.Drawing.Point(577, 565);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
             this.reportViewer1.Size = new System.Drawing.Size(396, 155);
@@ -391,18 +301,132 @@
             // lblCariBakiye
             // 
             this.lblCariBakiye.AutoSize = true;
-            this.lblCariBakiye.Location = new System.Drawing.Point(1169, 320);
+            this.lblCariBakiye.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblCariBakiye.Location = new System.Drawing.Point(1154, 320);
             this.lblCariBakiye.Name = "lblCariBakiye";
-            this.lblCariBakiye.Size = new System.Drawing.Size(45, 16);
+            this.lblCariBakiye.Size = new System.Drawing.Size(48, 16);
             this.lblCariBakiye.TabIndex = 48;
-            this.lblCariBakiye.Text = "label4";
+            this.lblCariBakiye.Text = "00.00";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(1073, 320);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(60, 16);
+            this.label4.TabIndex = 49;
+            this.label4.Text = "Bakiye :";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(445, 523);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(110, 20);
+            this.checkBox1.TabIndex = 50;
+            this.checkBox1.Text = "Ünvana Göre";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // tBL_TedarikciHareketBindingSource
+            // 
+            this.tBL_TedarikciHareketBindingSource.DataMember = "TBL_TedarikciHareket";
+            this.tBL_TedarikciHareketBindingSource.DataSource = this.dB_Cariler;
+            // 
+            // dB_Cariler
+            // 
+            this.dB_Cariler.DataSetName = "DB_Cariler";
+            this.dB_Cariler.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "HareketID";
+            this.dataGridViewTextBoxColumn1.HeaderText = "HareketID";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "HareketTedarikciID";
+            this.dataGridViewTextBoxColumn2.HeaderText = "ID";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "HareketTedarikciUnvan";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Firma Adı";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "HareketTedarikciHamMadde";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Malzeme";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "HareketTedarikciHamMaddemiktar";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Miktar";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "HareketTedarikciHamMaddeFiyat";
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewTextBoxColumn6.HeaderText = "Fiyat";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "HareketTarih";
+            this.dataGridViewTextBoxColumn7.HeaderText = "Tarih";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "HareketToplam";
+            dataGridViewCellStyle2.Format = "C2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewTextBoxColumn8.HeaderText = "Tutar";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            // 
+            // tBL_TedarikciHareketTableAdapter
+            // 
+            this.tBL_TedarikciHareketTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.TBL_CariHareketTableAdapter = null;
+            this.tableAdapterManager.TBL_CarilerTableAdapter = null;
+            this.tableAdapterManager.TBL_GiderTableAdapter = null;
+            this.tableAdapterManager.TBL_OdemeTableAdapter = null;
+            this.tableAdapterManager.TBL_TahsilatTableAdapter = null;
+            this.tableAdapterManager.TBL_TedarikciHareketTableAdapter = this.tBL_TedarikciHareketTableAdapter;
+            this.tableAdapterManager.TBL_TedarikcilerTableAdapter = null;
+            this.tableAdapterManager.TBL_TedarikHammaddeTableAdapter = null;
+            this.tableAdapterManager.TBL_UrunlerTableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = WindowsFormsApp2.DB_CarilerTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // TedarikHareket
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Chocolate;
-            this.ClientSize = new System.Drawing.Size(1359, 554);
+            this.ClientSize = new System.Drawing.Size(1359, 552);
+            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.lblCariBakiye);
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.button3);
@@ -429,15 +453,15 @@
             this.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "TedarikHareket";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TedarikHareket";
             this.Load += new System.EventHandler(this.TedarikHareket_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dB_Cariler)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tBL_TedarikciHareketBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tBL_TedarikciHareketDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tBL_TedarikciHareketBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dB_Cariler)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -480,5 +504,7 @@
         private System.Windows.Forms.ComboBox txtCariAd;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private System.Windows.Forms.Label lblCariBakiye;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

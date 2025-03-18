@@ -29,9 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.tBL_TahsilatBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dB_Cariler = new WindowsFormsApp2.DB_Cariler();
             this.tBL_TahsilatDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TahsilatCariID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtCariAd = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dtTarih = new System.Windows.Forms.DateTimePicker();
@@ -55,20 +63,23 @@
             this.button4 = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.sorguCmb = new System.Windows.Forms.ComboBox();
-            this.tBL_TahsilatBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dB_Cariler = new WindowsFormsApp2.DB_Cariler();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tBL_TahsilatTableAdapter = new WindowsFormsApp2.DB_CarilerTableAdapters.TBL_TahsilatTableAdapter();
             this.tableAdapterManager = new WindowsFormsApp2.DB_CarilerTableAdapters.TableAdapterManager();
-            ((System.ComponentModel.ISupportInitialize)(this.tBL_TahsilatDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tBL_TahsilatBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dB_Cariler)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tBL_TahsilatDataGridView)).BeginInit();
             this.SuspendLayout();
+            // 
+            // tBL_TahsilatBindingSource
+            // 
+            this.tBL_TahsilatBindingSource.AllowNew = true;
+            this.tBL_TahsilatBindingSource.DataMember = "TBL_Tahsilat";
+            this.tBL_TahsilatBindingSource.DataSource = this.dB_Cariler;
+            // 
+            // dB_Cariler
+            // 
+            this.dB_Cariler.DataSetName = "DB_Cariler";
+            this.dB_Cariler.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // tBL_TahsilatDataGridView
             // 
@@ -89,9 +100,17 @@
             this.tBL_TahsilatDataGridView.Name = "tBL_TahsilatDataGridView";
             this.tBL_TahsilatDataGridView.ReadOnly = true;
             this.tBL_TahsilatDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tBL_TahsilatDataGridView.Size = new System.Drawing.Size(807, 590);
+            this.tBL_TahsilatDataGridView.Size = new System.Drawing.Size(807, 569);
             this.tBL_TahsilatDataGridView.TabIndex = 1;
             this.tBL_TahsilatDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tBL_TahsilatDataGridView_CellClick);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "TahsilatID";
+            this.dataGridViewTextBoxColumn1.HeaderText = "TahsilatID";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
             // 
             // TahsilatCariID
             // 
@@ -100,6 +119,43 @@
             this.TahsilatCariID.Name = "TahsilatCariID";
             this.TahsilatCariID.ReadOnly = true;
             this.TahsilatCariID.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "TahsilatCariUnvan";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Müşteri Adı";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "TahsilatTarih";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Tarih";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "TahsilatBanka";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Banka";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "TahsilatIslemNo";
+            this.dataGridViewTextBoxColumn5.HeaderText = "İşlem No";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "TahsilatMiktar";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Tutar";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
             // 
             // txtCariAd
             // 
@@ -257,13 +313,14 @@
             // reportViewer1
             // 
             this.reportViewer1.AutoSize = true;
-            reportDataSource3.Name = "DataSet1";
-            reportDataSource3.Value = this.tBL_TahsilatBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
+            reportDataSource2.Name = "DataSet1";
+            reportDataSource2.Value = this.tBL_TahsilatBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "WindowsFormsApp2.Tahsilat.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(1251, 330);
+            this.reportViewer1.Location = new System.Drawing.Point(1155, 311);
             this.reportViewer1.Margin = new System.Windows.Forms.Padding(1);
             this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
             this.reportViewer1.Size = new System.Drawing.Size(515, 246);
             this.reportViewer1.TabIndex = 18;
             // 
@@ -350,62 +407,6 @@
             this.sorguCmb.TabIndex = 25;
             this.sorguCmb.SelectedIndexChanged += new System.EventHandler(this.sorguCmb_SelectedIndexChanged);
             // 
-            // tBL_TahsilatBindingSource
-            // 
-            this.tBL_TahsilatBindingSource.AllowNew = true;
-            this.tBL_TahsilatBindingSource.DataMember = "TBL_Tahsilat";
-            this.tBL_TahsilatBindingSource.DataSource = this.dB_Cariler;
-            // 
-            // dB_Cariler
-            // 
-            this.dB_Cariler.DataSetName = "DB_Cariler";
-            this.dB_Cariler.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "TahsilatID";
-            this.dataGridViewTextBoxColumn1.HeaderText = "TahsilatID";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "TahsilatCariUnvan";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Müşteri Adı";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "TahsilatTarih";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Tarih";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "TahsilatBanka";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Banka";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "TahsilatIslemNo";
-            this.dataGridViewTextBoxColumn5.HeaderText = "İşlem No";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "TahsilatMiktar";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Tutar";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            // 
             // tBL_TahsilatTableAdapter
             // 
             this.tBL_TahsilatTableAdapter.ClearBeforeFill = true;
@@ -429,7 +430,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Chocolate;
-            this.ClientSize = new System.Drawing.Size(1130, 667);
+            this.ClientSize = new System.Drawing.Size(1135, 629);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.sorguCmb);
             this.Controls.Add(this.button4);
@@ -462,9 +463,9 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Müşteri Tahsilat";
             this.Load += new System.EventHandler(this.tahsilat_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.tBL_TahsilatDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tBL_TahsilatBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dB_Cariler)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tBL_TahsilatDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

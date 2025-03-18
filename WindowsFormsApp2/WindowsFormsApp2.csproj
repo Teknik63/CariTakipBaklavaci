@@ -156,6 +156,7 @@
     <EmbeddedResource Include="CariKayit.resx">
       <DependentUpon>CariKayit.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CarilerHareket.rdlc" />
     <EmbeddedResource Include="CarilerHareket.resx">
       <DependentUpon>CarilerHareket.cs</DependentUpon>
     </EmbeddedResource>
